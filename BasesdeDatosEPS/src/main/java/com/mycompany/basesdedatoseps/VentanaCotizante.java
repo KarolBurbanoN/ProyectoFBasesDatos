@@ -4,20 +4,33 @@ package com.mycompany.basesdedatoseps;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import Clases.Beneficiario;
+import Clases.Cotizante;
+import java.awt.Image;
+import java.util.Map;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Karol
  */
 public class VentanaCotizante extends javax.swing.JFrame {
-
+    private Cotizante cotizante;
+    
+    
     /**
      * Creates new form VentanaCotizante
      */
     public VentanaCotizante() {
         initComponents();
+        this.cotizante = cotizante;
+        cargarDatosCotizante();
     }
-
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,6 +72,25 @@ public class VentanaCotizante extends javax.swing.JFrame {
         jSeparator11 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
+        txtRango = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtBeneficiarios = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDireccion = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtDocumento = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtFechaNacimiento = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtCiudad = new javax.swing.JTextArea();
+        txtGenero = new javax.swing.JTextField();
+        txtEstadoCivil = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtSalario = new javax.swing.JTextField();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txtNombreApellido = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtTipoDocumento1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 500));
@@ -78,32 +110,34 @@ public class VentanaCotizante extends javax.swing.JFrame {
         Beneficiarios.setBackground(new java.awt.Color(0, 204, 153));
         Beneficiarios.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         Beneficiarios.setText("Beneficiarios");
-        jPanel1.add(Beneficiarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
+        jPanel1.add(Beneficiarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(45, 98, 138));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("HISTORIAL DE PAGOS");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 170, 40));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 170, 40));
 
         jPanel3.setBackground(new java.awt.Color(45, 98, 138));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,7 +168,7 @@ public class VentanaCotizante extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 90, 40));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, 90, 40));
 
         jPanel4.setBackground(new java.awt.Color(45, 98, 138));
 
@@ -170,73 +204,177 @@ public class VentanaCotizante extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 180, 40));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 190, 40));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel3.setText("SALARIO:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel5.setText("NOMBRE Y APELLIDO:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel6.setText("FECHA DE NACIMIENTO:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel7.setText("GENERO:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel8.setText("DIRECCIÓN: ");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel9.setText("ESTADO CIVIL:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel11.setText("RANGO:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel12.setText("TELÉFONO: ");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 110, 10));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 110, 10));
 
         jSeparator2.setForeground(new java.awt.Color(45, 98, 138));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 200, 10));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 200, 10));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 200, 10));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 130, 10));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 100, 10));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 200, 10));
-        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 130, 10));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 140, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 190, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 200, 10));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 200, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 130, 10));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 100, 10));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 200, 10));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 130, 10));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 140, 10));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel13.setText("CIUDAD: ");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
-        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 110, 10));
-        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 200, 10));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 110, 10));
+        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 200, 10));
 
         jSeparator12.setForeground(new java.awt.Color(45, 98, 138));
         jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 200, 10));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel14.setText("TIPO Y  N° DOCUMENTO:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        txtRango.setBorder(null);
+        txtRango.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRangoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 100, 20));
+
+        txtBeneficiarios.setColumns(20);
+        txtBeneficiarios.setRows(5);
+        jScrollPane1.setViewportView(txtBeneficiarios);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 190, 240));
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        txtDireccion.setColumns(20);
+        txtDireccion.setRows(5);
+        jScrollPane2.setViewportView(txtDireccion);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 200, 20));
+
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        txtDocumento.setColumns(20);
+        txtDocumento.setRows(5);
+        jScrollPane3.setViewportView(txtDocumento);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 150, 20));
+
+        jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        txtFechaNacimiento.setColumns(20);
+        txtFechaNacimiento.setRows(5);
+        jScrollPane5.setViewportView(txtFechaNacimiento);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 200, 20));
+
+        jScrollPane6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane6.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        txtCiudad.setColumns(20);
+        txtCiudad.setRows(5);
+        jScrollPane6.setViewportView(txtCiudad);
+
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 110, 20));
+
+        txtGenero.setBorder(null);
+        txtGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGeneroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 110, 20));
+
+        txtEstadoCivil.setBorder(null);
+        txtEstadoCivil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEstadoCivilActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 130, 20));
+
+        txtTelefono.setBorder(null);
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, 20));
+
+        txtSalario.setBorder(null);
+        txtSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 130, 20));
+
+        jScrollPane7.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane7.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        txtNombreApellido.setColumns(20);
+        txtNombreApellido.setRows(5);
+        jScrollPane7.setViewportView(txtNombreApellido);
+
+        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 200, 20));
+
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        txtTipoDocumento1.setColumns(20);
+        txtTipoDocumento1.setRows(5);
+        jScrollPane4.setViewportView(txtTipoDocumento1);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 50, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -259,6 +397,54 @@ public class VentanaCotizante extends javax.swing.JFrame {
         iniciarSesion.setVisible(true);
     }//GEN-LAST:event_jPanel3MouseClicked
 
+    private void txtRangoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRangoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRangoActionPerformed
+
+    private void txtGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGeneroActionPerformed
+
+    private void txtEstadoCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoCivilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstadoCivilActionPerformed
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioActionPerformed
+    
+    
+    private void cargarDatosCotizante() {
+        txtDocumento.setText(String.valueOf(cotizante.getId()));
+        txtTipoDocumento1.setText(cotizante.getTipoId());
+        txtNombreApellido.setText(cotizante.getNombres() + " " + cotizante.getApellidos());
+        txtFechaNacimiento.setText(cotizante.getFechaNacimiento().toString());
+        txtDireccion.setText(cotizante.getDireccion());
+        txtGenero.setText(cotizante.getGenero());
+        txtCiudad.setText(cotizante.getCiudadResidencia());
+        txtEstadoCivil.setText(cotizante.getEstadoCivil());
+        txtTelefono.setText(cotizante.getTelefono());
+        txtSalario.setText(String.valueOf(cotizante.getSalario()));
+        txtRango.setText(cotizante.getRangoSalarial());
+
+        actualizarListaBeneficiarios();
+}
+    
+    private void actualizarListaBeneficiarios() {
+    StringBuilder beneficiarios = new StringBuilder();
+    for (Beneficiario beneficiario : cotizante.getBeneficiarios()) {
+        beneficiarios.append("ID: ")
+                    .append(beneficiario.getId())
+                    .append(" - Parentesco: ")
+                    .append(beneficiario.getParentesco())
+                    .append("\n");
+    }
+    txtBeneficiarios.setText(beneficiarios.toString());
+    }
     /**
      * @param args the command line arguments
      */
@@ -315,6 +501,13 @@ public class VentanaCotizante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -327,5 +520,17 @@ public class VentanaCotizante extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextArea txtBeneficiarios;
+    private javax.swing.JTextArea txtCiudad;
+    private javax.swing.JTextArea txtDireccion;
+    private javax.swing.JTextArea txtDocumento;
+    private javax.swing.JTextField txtEstadoCivil;
+    private javax.swing.JTextArea txtFechaNacimiento;
+    private javax.swing.JTextField txtGenero;
+    private javax.swing.JTextArea txtNombreApellido;
+    private javax.swing.JTextField txtRango;
+    private javax.swing.JTextField txtSalario;
+    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextArea txtTipoDocumento1;
     // End of variables declaration//GEN-END:variables
 }

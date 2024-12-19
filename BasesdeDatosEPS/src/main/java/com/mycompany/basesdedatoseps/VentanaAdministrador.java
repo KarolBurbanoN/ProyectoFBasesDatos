@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.basesdedatoseps;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,9 +36,9 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        BotonGAfiliados = new javax.swing.JToggleButton();
+        BotonGEmpresas = new javax.swing.JToggleButton();
+        BotonGIPS = new javax.swing.JToggleButton();
         jToggleButton4 = new javax.swing.JToggleButton();
         jToggleButton6 = new javax.swing.JToggleButton();
         jToggleButton5 = new javax.swing.JToggleButton();
@@ -87,32 +92,32 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         jLabel5.setText("¿Qué deseas hacer?");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
-        jToggleButton1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jToggleButton1.setText("Gestionar Afiliados");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonGAfiliados.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        BotonGAfiliados.setText("Gestionar Afiliados");
+        BotonGAfiliados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                BotonGAfiliadosActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 180, 40));
+        jPanel1.add(BotonGAfiliados, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 180, 40));
 
-        jToggleButton2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jToggleButton2.setText("Gestionar Empresas");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotonGEmpresas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        BotonGEmpresas.setText("Gestionar Empresas");
+        BotonGEmpresas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                BotonGEmpresasActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 180, 40));
+        jPanel1.add(BotonGEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 180, 40));
 
-        jToggleButton3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jToggleButton3.setText("Gestionar IPS");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        BotonGIPS.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        BotonGIPS.setText("Gestionar IPS");
+        BotonGIPS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                BotonGIPSActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 180, 40));
+        jPanel1.add(BotonGIPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 180, 40));
 
         jToggleButton4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jToggleButton4.setText("Gestionar Contratos");
@@ -175,22 +180,22 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         iniciarSesion.setVisible(true);
     }//GEN-LAST:event_jPanel3MousePressed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void BotonGAfiliadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGAfiliadosActionPerformed
         this.dispose();  // Esto cierra la ventana de Cotizante
         // Crear una nueva instancia de la ventana de inicio de sesión (IniciarSesion)
         GestionAfiliados EditAfiliados = new GestionAfiliados();
 
         // Hacer visible la ventana de inicio de sesión
         EditAfiliados.setVisible(true);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_BotonGAfiliadosActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void BotonGEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGEmpresasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_BotonGEmpresasActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void BotonGIPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGIPSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_BotonGIPSActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         // TODO add your handling code here:
@@ -240,14 +245,14 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton BotonGAfiliados;
+    private javax.swing.JToggleButton BotonGEmpresas;
+    private javax.swing.JToggleButton BotonGIPS;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;

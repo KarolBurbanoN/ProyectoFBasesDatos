@@ -4,6 +4,8 @@
  */
 package com.mycompany.basesdedatoseps;
 
+import Clases.CredencialesFijas;
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -15,6 +17,7 @@ import javax.swing.JOptionPane;
  * @author Karol
  */
 public class IniciarSesion extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form IniciarSesion
@@ -25,6 +28,8 @@ public class IniciarSesion extends javax.swing.JFrame {
         setImageLabel(Logo, "src/main/java/Imagenes/Logo.png");
         setImageLabel(jLabel1, "src/main/java/Imagenes/Lateral.jpg");
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,11 +78,11 @@ public class IniciarSesion extends javax.swing.JFrame {
                 DesplegableUsuariosActionPerformed(evt);
             }
         });
-        jPanel2.add(DesplegableUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 130, -1));
+        jPanel2.add(DesplegableUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 200, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setText("CONTRASEÑA");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 130, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 160, -1));
 
         userTxt.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         userTxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -101,15 +106,20 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setText("USUARIO");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 80, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 130, -1));
 
         PassTxt.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         PassTxt.setForeground(new java.awt.Color(204, 204, 204));
-        PassTxt.setText("jPasswordField1");
+        PassTxt.setText("**********");
         PassTxt.setBorder(null);
         PassTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 PassTxtMousePressed(evt);
+            }
+        });
+        PassTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PassTxtActionPerformed(evt);
             }
         });
         jPanel2.add(PassTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 320, -1));
@@ -173,46 +183,65 @@ public class IniciarSesion extends javax.swing.JFrame {
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         String usuarioSeleccionado = (String) DesplegableUsuarios.getSelectedItem();
 
-        // Verificar la opción seleccionada y abrir la ventana correspondiente
+        String di = userTxt.getText();
+        String contrasena = new String(PassTxt.getPassword());
+
+        Coneccion conexion = new Coneccion();
+        boolean esValido = false;
+
         switch (usuarioSeleccionado) {
             case "ADMINISTRADOR":
-                VentanaAdministrador adminWindow = new VentanaAdministrador();
-                adminWindow.setVisible(true);
-                this.setVisible(false); // Ocultar la ventana de inicio de sesión
-                adminWindow.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        // Cuando se cierra la ventana ADMINISTRADOR, mostrar de nuevo la ventana de inicio de sesión
-                        setVisible(true); // Mostrar la ventana de inicio de sesión
-                    }
-                });
+                esValido = CredencialesFijas.validarAdministrador(di, contrasena);
+                if (esValido) {
+                    VentanaAdministrador adminWindow = new VentanaAdministrador();
+                    adminWindow.setVisible(true);
+                    this.setVisible(false);
+                    adminWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            setVisible(true);
+                        }
+                    });
+                }
                 break;
+
             case "BANCO":
-                Banco bancoWindow = new Banco();
-                bancoWindow.setVisible(true);
-                this.setVisible(false); // Ocultar la ventana de inicio de sesión
-                bancoWindow.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        // Cuando se cierra la ventana BANCO, mostrar de nuevo la ventana de inicio de sesión
-                        setVisible(true); // Mostrar la ventana de inicio de sesión
-                    }
-                });
+                esValido = CredencialesFijas.validarBanco(di, contrasena);
+                if (esValido) {
+                    Banco bancoWindow = new Banco();
+                    bancoWindow.setVisible(true);
+                    this.setVisible(false);
+                    bancoWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            setVisible(true);
+                        }
+                    });
+                }
                 break;
+
             case "COTIZANTE":
-                VentanaCotizante cotizanteWindow = new VentanaCotizante();
-                cotizanteWindow.setVisible(true);
-                this.setVisible(false); // Ocultar la ventana de inicio de sesión
-                cotizanteWindow.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        // Cuando se cierra la ventana COTIZANTE, mostrar de nuevo la ventana de inicio de sesión
-                        setVisible(true); // Mostrar la ventana de inicio de sesión
+                    conexion.conectar();
+                    esValido = conexion.validarCredencialesCotizantes(di, contrasena); // contrasena = Telefono
+                    if (esValido) {
+                        VentanaCotizante cotizanteWindow = new VentanaCotizante();
+                        cotizanteWindow.setVisible(true);
+                        this.setVisible(false);
+                        cotizanteWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+                            @Override
+                            public void windowClosing(java.awt.event.WindowEvent e) {
+                                setVisible(true);
+                            }
+                        });
                     }
-                });
-                break;
+                    break;
+
             default:
                 JOptionPane.showMessageDialog(this, "Tipo de usuario no válido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (!esValido) {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -221,14 +250,33 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void userTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTxtMousePressed
-        userTxt.setText("");
-        PassTxt.setText("********");
+        if (userTxt.getText().equals("Ingrese su ID")){
+            userTxt.setText("");
+            userTxt.setForeground(Color.black);
+        }
+        
+        if (String.valueOf(PassTxt.getPassword()).isEmpty()){
+            PassTxt.setText("**********");
+            PassTxt.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_userTxtMousePressed
 
     private void PassTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PassTxtMousePressed
-        userTxt.setText("Ingrese su DI");
-        PassTxt.setText("");
+        if (String.valueOf(PassTxt.getPassword()).equals("**********")){
+            PassTxt.setText("");
+            PassTxt.setForeground(Color.black);
+        }
+        if (userTxt.getText().isEmpty()){
+            userTxt.setText("Ingrese su DI");
+            userTxt.setForeground(Color.gray);
+        }
+        
+        
     }//GEN-LAST:event_PassTxtMousePressed
+
+    private void PassTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PassTxtActionPerformed
     
     private void setImageLabel(JLabel labelImage, String root) {
         ImageIcon image = new ImageIcon(root);
